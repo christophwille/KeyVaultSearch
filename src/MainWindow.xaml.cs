@@ -15,10 +15,10 @@ namespace KeyVaultSearch
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             this.kvSecretValue.Text = "loading...";
-            var client = new SecretClient(new Uri(this.kvUri.Text), new DefaultAzureCredential());
 
             try
             {
+                var client = new SecretClient(new Uri(this.kvUri.Text), new DefaultAzureCredential());
                 KeyVaultSecret theSecret = await client.GetSecretAsync(this.kvSecret.Text);
                 this.kvSecretValue.Text = theSecret.Value;
             }
